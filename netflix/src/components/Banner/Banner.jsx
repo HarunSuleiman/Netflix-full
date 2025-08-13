@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import requests from "../../utils/request.jsx";
-
+import "../../components/Banner/Banner.css";
 function Banner() {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
     (async () => {
-      
       try {
         const request = await axios.get(requests.fetchNetflixOriginals);
-        console.log(request);
+        // console.log(request);
         setMovie(
           request.data.results[
             Math.floor(Math.random() * request.data.results.length)
@@ -46,7 +45,7 @@ function Banner() {
         </div>
         <h1 className="banner_description">{truncate(movie?.overview, 150)}</h1>
       </div>
-      <div className="banner_fadeButton" />
+      <div className="banner_fadeButton"></div>
     </div>
   );
 }
